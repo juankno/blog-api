@@ -23,6 +23,7 @@ Route::group([
     "prefix" => "v1",
     "namespace" => "Api\V1"
 ], function () {
+    Route::apiResource('posts','PostController');
 });
 
 
