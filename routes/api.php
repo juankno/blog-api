@@ -24,3 +24,10 @@ Route::group([
     "namespace" => "Api\V1"
 ], function () {
 });
+
+
+Route::group([
+    "prefix" => "v2",
+    "namespace" => "Api\V2"
+], function () {
+});
