@@ -20,8 +20,8 @@ class DeletePostTest extends TestCase
         // $this->withoutExceptionHandling();
 
         $user = create(User::class);
-
         $this->actingAs($user);
+        
         $post = create(Post::class, ['author_id' => $user->id]);
         $newPost = [
             'id' => $post->id,
