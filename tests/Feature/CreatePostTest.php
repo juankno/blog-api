@@ -19,7 +19,7 @@ class CreatePostTest extends TestCase
     {
         // $this->withoutExceptionHandling();
 
-        $user = factory(User::class)->create();
+        $user = create(User::class);
         $this->actingAs($user);
 
         $data = [
@@ -36,11 +36,12 @@ class CreatePostTest extends TestCase
         $post = Post::first();
 
         $response->assertJson([
-            'data' =>[
+            'data' => [
                 'id' => $post->id,
-                'title' => $post->title
+                'title' => $post->title,
+                'author_id' => $user->id,
+                'content' => $post->content,
             ]
         ]);
-
     }
 }
