@@ -30,7 +30,7 @@ class PostController extends Controller
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'author_id' => $request->user()->id,
+            'author_id' => $request->author_id,
         ]);
 
         return response()->json(['data' => $post], 201);
@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return response()->json(['data' => $post], 200);
     }
 
     /**
@@ -56,7 +56,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return response()->json(['data' => $post], 200);
     }
 
     /**
