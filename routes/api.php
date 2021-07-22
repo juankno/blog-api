@@ -23,13 +23,15 @@ Route::group([
     "prefix" => "v1",
     "namespace" => "Api\V1"
 ], function () {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+
     Route::apiResource('posts', 'PostController');
     Route::post('logout', 'AuthController@logout');
     Route::post('profile', 'AuthController@user');
 });
 
-Route::post('login', 'Api\V1\AuthController@login');
-Route::post('signup', 'Api\V1\AuthController@signup');
+
 
 
 // Route::group([
