@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
@@ -44,6 +45,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        return new PostResource($post);
         return response()->json(['data' => $post], 200);
     }
 

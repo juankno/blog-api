@@ -27,6 +27,7 @@ Route::group([
     Route::post('signup', 'AuthController@signup');
 
     Route::middleware(["auth:api"])->group(function () {
+        Route::get('profile', 'AuthController@user');
         Route::post('logout', 'AuthController@logout');
         Route::apiResource('posts', 'PostController');
     });
