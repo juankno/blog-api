@@ -24,9 +24,7 @@ class PostsRelationshipReource extends JsonResource
                 'data' => new AuthorIdentifierResource($this->author)
             ],
 
-            'comment' => [
-                
-            ]
+            'comments' => new PostCommentRelationshipCollection($this->comments)
         ];
     }
 }
