@@ -26,9 +26,10 @@ Route::group([
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
 
-    Route::apiResource('posts', 'PostController');
-    Route::get('profile', 'AuthController@user');
-    Route::post('logout', 'AuthController@logout');
+    Route::middleware(["auth:api"])->group(function () {
+        Route::post('logout', 'AuthController@logout');
+        Route::apiResource('posts', 'PostController');
+    });
 });
 
 

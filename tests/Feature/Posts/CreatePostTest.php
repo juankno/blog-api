@@ -20,7 +20,6 @@ class CreatePostTest extends TestCase
         // $this->withoutExceptionHandling();
 
         $user = create(User::class);
-        $this->actingAs($user);
 
         $data = [
             'title' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),

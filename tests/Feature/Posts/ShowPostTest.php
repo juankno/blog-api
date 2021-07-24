@@ -18,7 +18,6 @@ class ShowPostTest extends TestCase
     public function an_authenticated_user_can_see_a_post()
     {
         $user = create(User::class);
-        $this->actingAs($user);
 
         $post = create(Post::class, ['author_id' => $user->id]);
 
