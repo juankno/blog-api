@@ -16,7 +16,12 @@ class PostsRelationshipReource extends JsonResource
     {
         return [
             'author' => [
+                'links' => [
+                    'self' => '',
+                    'related' => '',
+                ],
 
+                'data' => new AuthorIdentifierResource($this->author)
             ],
 
             'comment' => [
