@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 
 class PostController extends Controller
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return new PostCollection(Post::all());
     }
 
     /**
@@ -45,8 +46,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        PostResource::withoutWrapping();
         return new PostResource($post);
-        return response()->json(['data' => $post], 200);
     }
 
     /**

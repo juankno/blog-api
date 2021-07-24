@@ -14,6 +14,18 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'type' => $this->getTable(),
+            'id' => $this->id,
+            "attributes" => [
+                'title' =>  $this->title,
+            ],
+
+            'relationships' => new PostsRelationshipReource($this),
+
+            "links" => [
+                'self' => route('posts.show', ['post' => $this->id])
+            ]
+        ];
     }
 }
