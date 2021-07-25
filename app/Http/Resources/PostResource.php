@@ -27,7 +27,7 @@ class PostResource extends JsonResource
                 'created' => $this->created_at,
             ]),
 
-            'relationships' => new PostsRelationshipReource($this),
+            'relationships' => new PostsRelationshipResource($this),
 
             "links" => [
                 'self' => route('posts.show', ['post' => $this->id])

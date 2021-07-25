@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostsRelationshipReource extends JsonResource
+class PostsRelationshipResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,7 +24,8 @@ class PostsRelationshipReource extends JsonResource
                 'data' => new AuthorIdentifierResource($this->author)
             ],
 
-            'comments' => new PostCommentRelationshipCollection($this->comments)
+            'comments' => (new PostCommentRelationshipCollection($this->comments))
+                ->additional(["post" => $this])
         ];
     }
 }

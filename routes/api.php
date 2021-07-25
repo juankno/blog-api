@@ -31,6 +31,7 @@ Route::group([
         Route::apiResources([
             'posts' => 'PostController',
             'users' => 'UserController',
+            'comments' => 'CommentController'
         ]);
 
         Route::get('profile', 'AuthController@user');
