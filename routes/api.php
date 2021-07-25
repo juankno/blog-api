@@ -27,9 +27,22 @@ Route::group([
     Route::post('signup', 'AuthController@signup');
 
     Route::middleware(["auth:api"])->group(function () {
+
+        Route::apiResources([
+            'posts' => 'PostController',
+            'users' => 'UserController',
+        ]);
+
         Route::get('profile', 'AuthController@user');
         Route::post('logout', 'AuthController@logout');
-        Route::apiResource('posts', 'PostController');
+
+        Route::get('posts/{post}/relationship/author', 'PostRelationshipController@author')
+            ->name('posts.relationship.author');
+        Route::get('posts/{post}/author', 'PostRelationshipController@author')->name('posts.author');
+
+        Route::get('posts/{post}/relationship/comments', 'PostRelationshipController@comments')
+            ->name('posts.relationship.comments');
+        Route::get('posts/{post}/comments', 'PostRelationshipController@comments')->name('posts.comments');
     });
 });
 
