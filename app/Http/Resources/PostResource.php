@@ -14,12 +14,18 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = $request->user();
+
         return [
             'type' => $this->getTable(),
             'id' => $this->id,
             "attributes" => [
                 'title' =>  $this->title,
             ],
+
+            $this->mergeWhen($user->isAdmin(), [
+                'created' => $this->created_at,
+            ]),
 
             'relationships' => new PostsRelationshipReource($this),
 
