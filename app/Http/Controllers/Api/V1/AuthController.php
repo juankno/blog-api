@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -86,6 +87,7 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        UserResource::withoutWrapping();
+        return new UserResource($request->user());
     }
 }
