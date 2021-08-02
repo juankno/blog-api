@@ -18,4 +18,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isAuthorLoaded()
+    {
+        return $this->relationLoaded('author');
+    }
+
+    public function isCommentsLoaded()
+    {
+        return $this->relationLoaded('comments');
+    }
 }
