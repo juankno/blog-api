@@ -18,4 +18,24 @@ class PostCollection extends ResourceCollection
             'data' => PostResource::collection($this->collection)
         ];
     }
+
+    public function with($request)
+    {
+
+        $authors = $this->collection->map(function ($post) {
+            return $post->author;
+        });
+
+        return [
+            'links' => [
+                'self' => route('posts.index')
+            ],
+
+            'included' => $authors->map(function ($author) {
+                return new UserResource($author);
+            })
+
+
+        ];
+    }
 }
