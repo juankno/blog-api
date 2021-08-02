@@ -29,13 +29,17 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        PostResource::withoutWrapping();
+
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'author_id' => $request->author_id,
         ]);
 
-        return response()->json(['data' => $post], 201);
+        return (new PostResource($post))
+            ->response()
+            ->setStatusCode(200);
     }
 
     /**

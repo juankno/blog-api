@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'id' => $this->id,
             "attributes" => [
                 'title' =>  $this->title,
+                'content' => $this->content,
             ],
 
             $this->mergeWhen(($this->isAuthorLoaded() && $this->isCommentsLoaded()), [
