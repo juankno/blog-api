@@ -6,7 +6,7 @@ This is a project based in a standard JSON API. It uses the authentication based
 
 ### Launch the starter project
 
-*(Assuming you've [installed Laravel](https://laravel.com/docs/5.5/installation))*
+*(Assuming you've [installed Laravel](https://laravel.com/docs/7.x))*
 
 Fork this repository, then clone your fork, and run this in your newly created directory:
 
