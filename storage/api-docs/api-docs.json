@@ -1,0 +1,60 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Authentication Service",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://blog-api.test"
+        }
+    ],
+    "paths": {
+        "/api/v1/signup": {
+            "post": {
+                "summary": "Register a new users",
+                "operationId": "3f85adea29988893b04f452a6b190453",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Jessica Smith",
+                                    "email": "jessica@mail.com",
+                                    "password": "12345678",
+                                    "password_confirmation": "12345678"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created user!"
+                    },
+                    "422": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

@@ -11,9 +11,52 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Info(title="API Authentication Service", version="1.0")
+ *
+ * @OA\Server(url="http://blog-api.test")
+ */
 class AuthController extends Controller
 {
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/signup",
+     *     summary="Register a new users",
+     * @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="password_confirmation",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "Jessica Smith", "email": "jessica@mail.com", "password": "12345678", "password_confirmation": "12345678"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Successfully created user!"
+     *     ),
+     *     @OA\Response(
+     *         response="422",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
