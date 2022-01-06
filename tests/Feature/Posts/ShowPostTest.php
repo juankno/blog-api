@@ -25,11 +25,14 @@ class ShowPostTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJson([
-            'data' => [
-                'id' => $post->id,
-                'title' => $post->title,
+            'type' => $post->getTable(),
+            'id' => $post->id,
+            "attributes" => [
+                'title' =>  $post->title,
                 'content' => $post->content,
-                'author_id' => $user->id,
+            ],
+            "links" => [
+                'self' => route('posts.show', ['post' => $post->id])
             ]
         ]);
     }

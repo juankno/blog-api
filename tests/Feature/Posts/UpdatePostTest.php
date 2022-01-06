@@ -17,7 +17,7 @@ class UpdatePostTest extends TestCase
      */
     public function an_authenticated_user_can_update_a_post()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
 
         $user = create(User::class);
 

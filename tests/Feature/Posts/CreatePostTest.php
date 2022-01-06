@@ -35,11 +35,14 @@ class CreatePostTest extends TestCase
         $post = Post::first();
 
         $response->assertJson([
-            'data' => [
-                'id' => $post->id,
-                'title' => $post->title,
-                'author_id' => $user->id,
+            'type' => $post->getTable(),
+            'id' => $post->id,
+            "attributes" => [
+                'title' =>  $post->title,
                 'content' => $post->content,
+            ],
+            "links" => [
+                'self' => route('posts.show', ['post' => $post->id])
             ]
         ]);
     }

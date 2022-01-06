@@ -39,7 +39,7 @@ class PostController extends Controller
 
         return (new PostResource($post))
             ->response()
-            ->setStatusCode(200);
+            ->setStatusCode(201);
     }
 
     /**
