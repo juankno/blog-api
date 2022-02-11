@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://blog-api.test', 'http://blog-authenticated.herokuapp.com'],
+    'allowed_origins' => ['http://blog-api.test', 'http://blog-authenticated.herokuapp.com', 'http://localhost', 'http://localhost:3000'],
 
     'allowed_origins_patterns' => [],
 
