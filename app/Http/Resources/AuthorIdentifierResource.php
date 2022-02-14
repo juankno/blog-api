@@ -18,6 +18,7 @@ class AuthorIdentifierResource extends JsonResource
 
             'type' => $this->getTable(),
             'id' => $this->id,
+            'name' => $this->name,
         ];
     }
 }
